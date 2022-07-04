@@ -4,31 +4,32 @@ const fetch = require('node-fetch');
 fetch('https://jsonplaceholder.typicode.com/users')
 .then((response)=> response.json())
 .then((data)=>{
-
     let userIds = data.reduce((acc, eachElement)=>{
-
         if(eachElement.name.includes("Nicholas"))
         {
-            acc.push(eachElement.id);
+            acc[eachElement["id"]] = true;
         }
 
         return acc;
-    },[])
-
+    },{})
+console.log(userIds)
     
     fetch('https://jsonplaceholder.typicode.com/todos')
     .then((response) => response.json())
-    .then((data) => { console.log(data)
+    .then((data) => {
 
        function getToDos (){
-        data.filter((eachElement)=>{
-             if(Number(eachElement.id)==Number(userIds[0]))
-            {
-                return eachElement;
+         return data.filter((eachElement) => {
+            if(!userIds[eachElement['id']]){
+                return false;
             }
+            else {
+                return true;
+            }
+            
         })   
        } 
 
-        console.log(getToDos);
+        console.log(getToDos());
     })
 })

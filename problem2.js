@@ -12,11 +12,16 @@ function readTheFile(path, transformation){
                     reject(err);
                 }
                 else{
-                    resolve(transformation(data));
+
+            
                 }
             })
         }
     })
+}
+
+function transformation(){
+    
 }
 
 
