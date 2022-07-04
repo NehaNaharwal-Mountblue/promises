@@ -22,7 +22,6 @@ function readTheFile(path, transformation){
 
 function transformation(data){
    const parsingData = JSON.parse(data);
-   console.log(parsingData);
    return Object.values(data);
 
 }
