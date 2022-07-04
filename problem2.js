@@ -13,16 +13,20 @@ function readTheFile(path, transformation){
                 }
                 else{
 
-            
+            resolve(transformation(data));
                 }
             })
         }
     })
 }
 
-function transformation(){
-    
+function transformation(data){
+   const parsingData = JSON.parse(data);
+   console.log(parsingData);
+   return Object.values(data);
+
 }
 
+readTheFile("./file.json", transformation);
 
 
